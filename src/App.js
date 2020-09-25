@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Countries from './Components/Countries/Countries';
+import FavouriteCountries from './Components/FavouriteCountries/FavouriteCountries';
 
 function App() {
+ const [country, setCountry] = useState([]);
+const [ favouriteCountries, setFavouriteCountries] = useState([]);
+
+ useEffect( () => {
+   fetch('https://restcountries.eu/rest/v2/all')
+   .then(res => res.json())
+   .then(data => setCountry(data))
+ }, []) 
+
+ const addCountry = (country) => {
+      const newFavouriteCountries = [...favouriteCountries, country]
+      setFavouriteCountries(newFavouriteCountries)
+ }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <FavouriteCountries favouriteCountries={favouriteCountries}></FavouriteCountries>
+      <h1>Total Country Loaded: {country.length} </h1>
+      {
+        country.map(country => <Countries country={country} addCountry={addCountry} key={country.numericCode}></Countries> )
+      }
     </div>
   );
 }

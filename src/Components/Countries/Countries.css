@@ -1,0 +1,32 @@
+.card{
+    width: 500px;
+    background: lightgray;
+    margin: auto;
+    margin-top: 20px;
+    padding: 30px 10px; 
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px black;
+}
+.card img{
+    width: 300px;
+}
+.favourite-btn {background-image: linear-gradient(to right, #FC354C 0%, #0ABFBC  51%, #FC354C  100%)}
+.favourite-btn {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border: none;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .favourite-btn:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
